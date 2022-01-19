@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        SECRET
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 pt-4">
+                <div class="col-md-12">
+                    <h2>Hidden things by prasanna arla</h2>
+
+                    <form>
+                        <div class="form-group">
+                            <label for="form1_Secret">Enter the secret word </label>
+                            <input type="password" id="form1_Secret" class="form-control" name="form1_Secret" min=10 max=50 step=2> <br>
+                        </div>
+                        <div class="form-group">
+                            <label for="form1_guess">Enter a guess</label>
+                            <input type="text" id="form1_guess" class="form-control" name="form1_guess" autofocus>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="button" onclick="processGuess()" class="btn btn-primary btn-md"
+                                value="Check the guess">
+                        </div>
+                        <p id="result">Results</p>
+                    </form>
+                </div>
+                <div>
+                    <img id="plants" src="Abroma.jpg" width="200" height="200" onclick="rotateImage()">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var correct = 0;
+        var wrong = 0;
+
+        function processGuess() {
+            console.log("Getting form values")
+            secret = document.getElementById("form1_Secret").value
+            guess = document.getElementById("form1_guess").value
+
+
+            out = document.getElementById("result")
+            if (secret == guess) {
+                correct += 1;
+                alert("Congratulation")
+                out.innerHTML = "success attempts" + correct
+            } else {
+                wrong += 1;
+                alert("Sorry")
+                out.innerHTML = "wrong attempts" + wrong
+            }
+        }
+
+        var currentImage = 0;
+
+        function rotateImage() {
+            switch (currentImage) {
+                case 0:
+                    currentImage = currentImage + 1;
+                    document.getElementById("plants").src = "Abroma.jpg"
+                    break;
+                case 1:
+                    currentImage = currentImage + 1;
+                    document.getElementById("plants").src = "Abrus.jpg"
+                    break;
+                case 2:
+                    currentImage = currentImage + 1;
+                    document.getElementById("plants").src = "Abroma.jpg"
+                    break;
+                default:
+                    currentImage = 0
+                    document.getElementById("plants").src = "Abrus.jpg"
+
+            }
+        }
+    </script>
+
+</body>
+
+</html>
